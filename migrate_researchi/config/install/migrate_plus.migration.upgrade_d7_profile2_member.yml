@@ -1,0 +1,149 @@
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_profile2_member
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'RI'
+  - Content
+migration_group: migrate_ri
+label: 'Profile2 ()'
+source:
+  plugin: d7_profile2
+  constants:
+    status: 1
+    is_default: 1
+  bundle: member
+process:
+  profile_id:
+    -
+      plugin: get
+      source: pid
+  type:
+    -
+      plugin: get
+      source: type
+  uid:
+    -
+      plugin: get
+      source: uid
+  status:
+    -
+      plugin: get
+      source: constants/status
+  is_default:
+    -
+      plugin: get
+      source: constants/is_default
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  field_clients_worked_for:
+    -
+      plugin: get
+      source: field_clients_worked_for
+  field_last_worked:
+    -
+      plugin: sub_process
+      source: field_last_worked
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value
+  field_u_disabled:
+    -
+      plugin: get
+      source: field_u_disabled
+  field_u_disabled_details:
+    -
+      plugin: get
+      source: field_u_disabled_details
+  field_u_employed_role:
+    -
+      plugin: get
+      source: field_u_employed_role
+  field_u_firstname:
+    -
+      plugin: get
+      source: field_u_firstname
+  field_u_gender:
+    -
+      plugin: get
+      source: field_u_gender
+  field_u_last_name:
+    -
+      plugin: get
+      source: field_u_last_name
+  field_u_many_children:
+    -
+      plugin: get
+      source: field_u_many_children
+  field_u_nationality:
+    -
+      plugin: get
+      source: field_u_nationality
+  field_u_nearest_city:
+    -
+      plugin: get
+      source: field_u_nearest_city
+  field_u_phone_number:
+    -
+      plugin: get
+      source: field_u_phone_number
+  field_u_postcode:
+    -
+      plugin: get
+      source: field_u_postcode
+  field_employ_status:
+    -
+      plugin: get
+      source: field_employ_status
+  field_u_date_birth:
+    -
+      plugin: sub_process
+      source: field_u_date_birth
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value
+  field_u_ethnic_orig:
+    -
+      plugin: get
+      source: field_u_ethnic_orig
+  field_u_member_notes:
+    -
+      plugin: get
+      source: field_u_member_notes
+  field_u_member_tags:
+    -
+      plugin: sub_process
+      source: field_u_member_tags
+      process:
+        target_id: tid
+  field_u_projects_worked:
+    -
+      plugin: get
+      source: field_u_projects_worked
+  field_profile_status:
+    -
+      plugin: get
+      source: field_profile_status
+destination:
+  plugin: 'entity:profile'
+  default_bundle: member
+migration_dependencies:
+  required:
+    - upgrade_d7_profile2_type
+  optional:
+    - upgrade_d7_field_instance

@@ -1,0 +1,35 @@
+name: 'Migrate Researchi'
+type: module
+description: 'Custom migration of the Researchi D7 site to D9'
+core: 8.x
+core_version_requirement: '^8 || ^9'
+dependencies:
+  - drupal:migrate
+  - drupal:migrate_drupal
+  - drupal:migrate_plus
+  - drupal:migrate_tools
+  - drupal:migrate_manifest
+  - drupal:config
+  - drupal:field
+  - drupal:filter
+  - drupal:media
+  - drupal:media_library
+  - drupal:node
+  - drupal:path
+  - drupal:system
+  - drupal:taxonomy
+  - drupal:editor
+  - drupal:user
+  - drupal:comment
+  - drupal:auto_entitylabel
+  - drupal:select_or_other
+  - drupal:datetime
+  - drupal:file
+  - drupal:image
+  - drupal:link
+  - drupal:options
+  - drupal:text
+  - drupal:entity
+  - drupal:profile
+  - drupal:token
+  - drupal:paragraphs
