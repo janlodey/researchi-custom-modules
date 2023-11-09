@@ -1,8 +1,8 @@
 name: 'Migrate Researchi'
 type: module
-description: 'Custom migration of the Researchi D7 site to D9'
-core: 8.x
-core_version_requirement: '^8 || ^9'
+description: 'Custom migration of the Researchi D7 site to D10'
+core: 10.x
+core_version_requirement: '^8 || ^9 || ^10'
 dependencies:
   - drupal:migrate
   - drupal:migrate_drupal
