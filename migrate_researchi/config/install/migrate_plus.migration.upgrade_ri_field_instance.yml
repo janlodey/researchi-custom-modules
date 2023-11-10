@@ -83,7 +83,7 @@ process:
       process:
         -
           plugin: migration_lookup
-          migration: upgrade_d7_taxonomy_vocabulary
+          migration: upgrade_ri_taxonomy_vocabulary
           source: vid
   settings:
     0:

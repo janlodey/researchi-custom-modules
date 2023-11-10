@@ -37,7 +37,7 @@ process:
   roles:
     -
       plugin: migration_lookup
-      migration: upgrade_d7_user_role
+      migration: upgrade_ri_user_role
       source: roles
   weight:
     -

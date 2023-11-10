@@ -20,7 +20,7 @@ process:
   field_type_exists:
     -
       plugin: migration_lookup
-      migration: upgrade_d7_field
+      migration: upgrade_ri_field
       source:
         - field_name
         - entity_type
@@ -34,7 +34,7 @@ process:
   bundle:
     0:
       plugin: migration_lookup
-      migration: upgrade_d7_field_instance
+      migration: upgrade_ri_field_instance
       source:
         - entity_type
         - bundle
