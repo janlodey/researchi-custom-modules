@@ -1,6 +1,80 @@
 <?php
 
-/**
- * @file
- * Primary module hooks for Update Config Entity Module module.
- */
+function update_config_entity_module_update_0001()
+{
+    $fields = [
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_webform',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_page',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_project',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_project_screener',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_landing_page',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_client',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'comment',
+            'bundle' => 'comment_node_blog',
+            'field_name' => 'comment_body',
+        ],
+        [
+            'entity_type' => 'paragraph',
+            'bundle' => 's_three',
+            'field_name' => 'field_image',
+        ],
+        [
+            'entity_type' => 'paragraph',
+            'bundle' => 's_three',
+            'field_name' => 'field_link',
+        ],
+        [
+            'entity_type' => 'paragraph',
+            'bundle' => 's_three',
+            'field_name' => 'field_title',
+        ],
+        [
+            'entity_type' => 'paragraph',
+            'bundle' => 'itle_grid',
+            'field_name' => 'field_title',
+        ],
+        [
+            'entity_type' => 'paragraph',
+            'bundle' => 'itle_grid',
+            'field_name' => 'field_image',
+        ],
+    ];
+
+    foreach ($fields as $field) {
+
+        /** @var \Drupal\Core\KeyValueStore\KeyValueFactoryInterface $key_value_factory */
+        $key_value_factory = \Drupal::service('keyvalue');
+        $field_map_kv_store = $key_value_factory->get('entity.definitions.bundle_field_map');
+        $map = $field_map_kv_store->get($field['entity_type']);
+
+        // Remove the field_fpimage field from the bundle gallery_assist for the page bundle.
+        unset($map[$field['field_name']]['bundles'][$field['bundle']]);
+
+        $field_map_kv_store->set($field['entity_type'], $map);
+    }
+}
