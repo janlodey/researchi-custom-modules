@@ -1,0 +1,5 @@
+name: 'Update Config Entity Module'
+type: module
+description: 'Update Config Entity Module to prune random config from migratiomn'
+package: Custom
+core_version_requirement: ^10

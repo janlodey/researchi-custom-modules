@@ -10,7 +10,8 @@
 /// drush commands
 
 # import to migrate source db
-lando db-import --host=migratedb --user=mysql _DB-backups/dec2021-backup.sql.zip
+lando db-import --host=migratedb --user=mysql web/_DB-backups/dec2021-backup.sql.zip
+lando db-import --host=migratedb --user=mysql web/_DB-backups/live-10nov2023.sql.gz
 
 #import to rollback on main database
 lando db-import --host=database --user=pantheon _DB-backups/D9-starting-base.sql.gz
@@ -19,8 +20,7 @@ lando db-import --host=database --user=pantheon _DB-backups/D9-starting-base.sql
 ld migrate-upgrade --legacy-db-url=mysql://mysql:mysql@migratedb/database --legacy-root=https://www.researchi.co.uk --configure-only
 
 # use this to import active config from this module - rather than install uninstall etc.
-lando drush config-import --partial --source=modules/custom/migrate_researchi/config/install
-
+ld cim --partial --source=web/modules/custom/ri-modules/migrate_researchi/config/install
 
 
 
