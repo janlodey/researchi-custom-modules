@@ -1,30 +1,25 @@
 ## INTRODUCTION
 
-The Update Config Entity Module module is a DESCRIBE_THE_MODULE_HERE.
+Creating a module to solve this issue: A non-existent config entity name returned by FieldStorageConfigInterface::getBundles(): entity type:
 
-The primary use case for this module is:
+You're going to create a custom module on your computer. Start by making a folder, I called mine "update_config_entity" If you want to use a different name, feel free to, you'll just need to make some adjustments to my code based on @junaidpv's code
+Inside this folder, create a file called update_config_entity.info.yml
+The contents will be:
+name: Update Config Entity Module
+description: Fixes Error - A non-existent config entity name returned by FieldStorageConfigInterface::getBundles() entity type comment, bundle.
+package: Custom
 
-- Use case #1
-- Use case #2
-- Use case #3
+type: module
+core_version_requirement: ^9.4 || ^10
+Create another file called drush.services.yml and go to @junaidpv's repository, copy the contents from their example of the same name into this file.
+On line 3, change \Drupal\my_module\Commands\UpdateCommands to \Drupal\update_config_entity\Commands\UpdateCommands (or the name of your module)
+Create a folder called src, inside that, create a folder called Commands
+Inside the Commands folder, create a file called UpdateCommands.php
+Put the contents from @junaidpv's UpdateCommands file into your file.
+Update line 3 from namespace Drupal\my_module\Commands; to namespace Drupal\update_config_entity\Commands;
+Now put the module in the /web/modules/custom/ folder in your site, activate it, and run the drush command.
+In your command line, run: drush update:correct-field-config-storage entity_type bundle field_name, changing entity_type, bundle, and field_name to match the errors you're getting on your site.
+the errors should go away and you can disable the module and remove it from your site.
 
-## REQUIREMENTS
 
-DESCRIBE_MODULE_DEPENDENCIES_HERE
-
-## INSTALLATION
-
-Install as you would normally install a contributed Drupal module.
-See: https://www.drupal.org/node/895232 for further information.
-
-## CONFIGURATION
-- Configuration step #1
-- Configuration step #2
-- Configuration step #3
-
-## MAINTAINERS
-
-Current maintainers for Drupal 10:
-
-- FIRST_NAME LAST_NAME (NICKNAME) - https://www.drupal.org/u/NICKNAME
-
+ld update:correct-field-config-storage comment comment_node_webform comment_body

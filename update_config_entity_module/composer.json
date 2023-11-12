@@ -1,0 +1,13 @@
+{
+    "name": "ri-modules/update_config_entity_module",
+    "description": "prune old db entries",
+    "type": "project",
+    "license": "MIT",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9 || ^10"
+            }
+        }
+    }
+}
