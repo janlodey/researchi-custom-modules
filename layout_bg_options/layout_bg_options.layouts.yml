@@ -1,0 +1,44 @@
+# See layout_discover.layout.yml.
+# Compare to layout_twocol_bricks.
+# Changes we made...
+# 1. Use layout__layout_bg as thew theme_hook.
+#    Remove the template key in favor of theme_hook.
+#    We also remove the path key.
+# 2. Add our very simple layout class as the class.
+#    It is defined in this example module.
+#    Note that the class sets 'layout--twocol-bricks.html.twig'
+#    as the base template. That's the template declared in
+#    layout_discover.layout.yml for layout_twocol_bricks.
+# 3. Use the library defined in this example module as the library.
+# 4. Add background to the list of regions.
+layout_bg_options:
+  label: 'TW column with Background Image'
+  theme_hook: layout__layout_bg
+  library: layout_bg_options/layout_bg_options
+  class: '\Drupal\layout_bg_options\Plugin\Layout\LayoutBgOptions'
+  category: 'Tailwind'
+  default_region: main
+  icon_map:
+    - [main]
+  regions:
+    background:
+      label: Background
+    main:
+      label: 'Main content'
+
+layout_two_bg_options:
+  label: 'TW 2 column with Background Image'
+  theme_hook: layout__layout_bg
+  library: layout_bg_options/layout_bg_options
+  class: '\Drupal\layout_bg_options\Plugin\Layout\LayoutBgOptions2col'
+  category: 'Tailwind'
+  default_region: first
+  icon_map:
+    - [first,second]
+  regions:
+    background:
+      label: Background
+    first:
+      label: 'First column'
+    second:
+      label: 'Second column'

@@ -1,0 +1,9 @@
+name: Layout BG Options
+description: "Provides layout BG layouts with options"
+package: Layout
+type: module
+core_version_requirement: ^9 || ^10
+dependencies:
+  - layout_bg:layout_bg
+
+
